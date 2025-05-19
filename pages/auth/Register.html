@@ -1,0 +1,45 @@
+<form method="post" id="register">
+    <input 
+        name="user_name"
+        type="text"
+        placeholder="Nome do usuário"
+
+    />
+
+    <input 
+        name="user_password"
+        type="password"
+    />
+
+    <button 
+        type="submit"
+    >
+        Criar user
+    </button>
+</form>
+
+<script>
+    document.getElementById('register').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = e.target.user_name.value
+        const password = e.target.user_password.value
+
+        const res = await fetch('http://localhost:3000/save-user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+
+            body: JSON.stringify({ login: name, password: password})
+
+        })  
+    
+        console.log(res.status)
+        if(res.status === 201)
+        {
+            location = '/_1/pages/auth/Login.html'
+        }
+    });
+
+</script>
