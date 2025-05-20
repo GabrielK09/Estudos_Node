@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+    <div class="calc" id="calc">
+        <div id="number_display" class="">
+        </div>
+        <input type="button" value="1">
+        <input type="button" value="2">
+        <input type="button" value="3">
+        <input type="button" value="4">
+        <input type="button" value="5">
+        <input type="button" value="6">
+        <input type="button" value="7">
+        <input type="button" value="8">
+        <input type="button" value="9">
+        <input type="button" value="+">
+        <input type="button" value="-">
+        <input type="button" value="*">
+        <input type="button" value="/">
+        <input type="button" value="=">
+        <input type="button" value="C">
+    </div>
+    
+</body>
+</html>
+<script>
+    let display = document.getElementById('number_display');
+
+    document.getElementById('calc').addEventListener('click', (e) => {
+        if(e.target.tagName === 'INPUT')
+        {
+            const value = e.target.value 
+            if(value === '=')
+            {
+                display.innerHTML = eval(display.innerText)   
+            }
+            else if (value === 'C')
+            {
+                display.innerText = ''
+            }
+            else {
+                display.innerText += value
+            }
+            
+        }
+
+    });
+</script>

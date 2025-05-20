@@ -1,0 +1,37 @@
+<div class="">
+    <form id="forms">
+        <input type="text" name="text" placeholder="Texto a ser criptografado">
+        <button type="submit">Enviar</button>
+
+    </form>
+    <p id="result"></p>
+</div>
+
+
+<script>
+    let result_p = document.getElementById('result')
+    document.getElementById('forms').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const value = e.target.elements.text.value;
+
+        const res = await fetch('http://localhost:3000/crypto', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+
+            },
+            body: JSON.stringify({ text: value })
+        })
+        
+        let json = await res.json()
+        if(json.status === 'true')
+        {
+            result_p.innerText = json.data
+        } else {
+            result_p.innerText = 'Erro'
+        }
+        
+        console.log('Res: ', typeof json.status)
+    })
+    
+</script>

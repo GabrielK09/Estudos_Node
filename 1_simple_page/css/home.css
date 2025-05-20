@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+.calc {
+    background: #ccc;
+    padding: 1rem;
+}
+
+#number_display {
+    background: #fff;
+    padding: 25px;
+    margin: 0 0 10px 0;
+
+}
