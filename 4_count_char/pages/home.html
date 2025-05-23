@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+</head> 
+<body>
+    <form action="" id="form">
+        <input type="text" name="word" placeholder="Contar">
+        <button type="submit">Contar</button>
+    </form>
+    <span>Quantia: <span id="result"></span></span>
+</body>
+</html>
+
+<script>
+    let result = document.getElementById('result');
+    document.getElementById('form').addEventListener('submit', (event) => {
+        event.preventDefault()
+        let word = event.target.word.value
+        result.innerText = word.split("").length
+        
+    });
+    
+</script>

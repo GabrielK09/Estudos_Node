@@ -1,0 +1,59 @@
+<span id="string_"></span>
+<form id="form">
+    <input 
+        type="text" 
+        name="char"
+        placeholder="Digite uma letra"
+        maxlength="1"
+        minlength="1"
+    />
+    
+    <button type="submit">Tentar</button>
+
+</form>
+
+<script>
+    let string = 'string';
+    let countError = 0;
+    let censured = string.split('').map(() => '*');
+
+    let label = document.getElementById('string_');
+    label.innerText = censured.join('');
+
+    document.getElementById('form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const input = event.target.char.value;
+        event.target.char.value = ''
+        let found = false;
+
+        for (let i = 0; i < string.length; i++) {
+            if(string[i] === input)
+            {
+                censured[i] = input
+                found = true;
+            } 
+
+            label.innerText = censured.join('');
+        }
+
+        if(!found)
+        {
+            countError++;
+            console.log('Erros: ', countError)
+        }
+
+        if (countError >= 3) {
+            alert('Você perdeu!')
+            window.location.reload()
+            
+        }
+
+        if(!censured.includes('*'))
+        {
+            alert('Você ganhou!')
+            window.location.reload()
+
+        }
+    });
+
+</script>
